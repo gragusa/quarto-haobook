@@ -1,4 +1,4 @@
-#import "@preview/marginalia:0.1.3" as marginalia: note
+#import "@preview/marginalia:0.1.3" as marginalia: note, get-right, get-left
 #import "@preview/numbly:0.1.0": numbly
 #import "tools.typ": *
 
@@ -136,10 +136,20 @@
   if x.caption != none {
     context {
       show figure.caption: none
+      let caption-content = bold-figure-caption(x.caption, x.location())
+      let margin-width = get-right().width
+      let caption-height = measure(
+        width: margin-width,
+        {
+          set text(size: 0.85em)
+          set par(spacing: 1.2em, leading: 0.5em)
+          caption-content
+        }
+      ).height
       x
       margin-note(
-        bold-figure-caption(x.caption, x.location()),
-        dy: -measure(x.body).height - 0.65em,
+        caption-content,
+        dy: -caption-height - 2em,
       )
       v(-par.spacing)
     }
