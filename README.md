@@ -11,7 +11,7 @@ If you fork this, please share your maintained version:
 ## Installation
 
 ```bash
-quarto add gordonwoodhull/quarto-haobook
+quarto add gragusa/quarto-haobook
 ```
 
 ## Usage
